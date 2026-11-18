@@ -10,12 +10,7 @@ A mobile app that connects patients with nurses. Patients can find a nearby nurs
 
 | Name | Role | GitHub |
 |------|------|--------|
-| Your Name | Team Lead / Flutter Developer | [@asifkhan216](https://github.com/asifkhan216) |
-| Member 2 | UI/UX Designer | [@username](https://github.com/username) |
-| Member 3 | Backend (Firebase) Developer | [@username](https://github.com/username) |
-| Member 4 | Tester / Documentation | [@username](https://github.com/username) |
-
-> Replace the names, roles and usernames with your real team.
+| Asif Khan | Project Lead, Flutter Developer, Firebase Backend and Tester | [@asifkhan216](https://github.com/asifkhan216) |
 
 ---
 
