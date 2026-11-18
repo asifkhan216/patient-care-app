@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "885865789951",
+    "project_id": "nurseapp2026-1090a",
+    "storage_bucket": "nurseapp2026-1090a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885865789951:android:68feecbdcf01648befcfca",
+        "android_client_info": {
+          "package_name": "com.Nurse.splash_screen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCajfuMrSYzqOqdbtCY8BbHHgFyv1UKTBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
