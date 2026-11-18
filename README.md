@@ -105,4 +105,4 @@ lib/
 ## Documentation
 
 - [Architecture overview](ARCHITECTURE.md)
-- Project board: *add your GitHub Projects link here*
+- Project board: [Patient Care Board](https://github.com/users/asifkhan216/projects/12)
