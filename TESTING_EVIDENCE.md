@@ -4,7 +4,7 @@
 **Author:** Asif Khan
 **Repository:** https://github.com/asifkhan216/patient-care-app
 
-This document shows how the app was tested: automated unit and widget tests, manual validation tests, manual end-to-end (integration) tests and simple performance measurements.
+This document shows how the app was tested: automated unit and widget tests, manual validation tests, manual end-to-end (integration) tests, security tests and simple performance measurements.
 
 ## 1. Test Environment
 
@@ -70,8 +70,37 @@ Measured by hand with a phone stopwatch.
 
 App start-up time was not measured. Each value is a single hand-timed measurement, so treat it as an approximate result, not a precise benchmark.
 
-## 6. Summary and Gaps
+## 6. Security Tests
 
-- All 7 automated tests and all 9 manual tests passed.
-- Messages are delivered in about one second, and the nurse list loads in about one second.
-- **Gaps:** screens that use Firebase directly are not yet covered by automated tests, there is no load testing with many users, and the performance figures are hand-timed. Mocking Firebase for widget tests, plus more precise timing, are planned next steps.
+### 6.1 Database rules
+
+The Firebase project was using the default **test mode** rules, which allow anyone to read and write until a fixed expiry date (27 November 2026). They were replaced with rules that require a logged-in user:
+
+```json
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+```
+
+`auth != null` means a request is only accepted when it comes from a user who is logged in with Firebase Authentication. The behaviour before the change was not tested; the tests below were run after the new rules were published.
+
+### 6.2 Test results
+
+Database address used: `https://nurseapp2026-1090a-default-rtdb.firebaseio.com`
+
+| ID | Test | Expected result | Actual result | Result |
+|----|------|-----------------|---------------|--------|
+| S1 | Read nurse profiles without logging in (open `/Nurse.json` in a browser) | Access is refused | `"error" : "Permission denied"` | Pass |
+| S2 | Read chats without logging in (open `/Chats.json` in a browser) | Access is refused | `"error" : "Permission denied"` | Pass |
+| S3 | Write data without logging in (HTTP PUT request to `/securitytest.json` from PowerShell) | The write is refused and nothing is saved | Request rejected with `Permission denied`; no data was created | Pass |
+| S4 | Use the app normally while logged in after the rules change | Nurse list, chat and Chats tab still work | Everything worked on both phones | Pass |
+
+Related test V3 (section 3) also confirmed that a login with a wrong password is rejected.
+
+### 6.3 Known security limitations
+
+- **Any logged-in user can still read all nurse profiles and all chats.** Firebase shows a warning about this on the Rules tab. This is risk R1 in the [project plan](PROJECT_PLAN.md). The planned fix is a per-user chat index with stricter rules, so each user can only read their own conversations.
+
