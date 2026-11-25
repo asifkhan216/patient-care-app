@@ -99,5 +99,12 @@ lib/
 
 ## Documentation
 
-- [Architecture overview](ARCHITECTURE.md)
+- [Technical documentation](TECHNICAL_DOCUMENTATION.md)
+- [Deployment instructions](DEPLOYMENT.md)
+- [Architecture diagrams](ARCHITECTURE_DIAGRAMS.md)
+- [Architecture overview](ARCHITECTURE.md) and [architecture update](ARCHITECTURE_UPDATE.md)
+- [Testing evidence](TESTING_EVIDENCE.md)
+- [Technical decision log](TECHNICAL_DECISION_LOG.md)
+- [Project plan](PROJECT_PLAN.md) and [progress summary](PROGRESS_SUMMARY.md)
 - Project board: [Patient Care Board](https://github.com/users/asifkhan216/projects/12)
+
